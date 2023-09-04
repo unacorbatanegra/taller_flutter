@@ -1,16 +1,27 @@
-# taller_flutter
+# Chat-C
 
-A new Flutter project.
+Este proyecto será realizado en el marco del Taller de Flutter a realizarse en septiembre de 2023
 
-## Getting Started
+## Instrucciones
 
-This project is a starting point for a Flutter application.
+1. [Instalar Flutter](https://docs.flutter.dev/get-started/install)
 
-A few resources to get you started if this is your first Flutter project:
+2. [Crear proyecto de Supabase](https://supabase.com/)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. [Configurar Editor](https://docs.flutter.dev/get-started/editor)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. Crear proyecto de Flutter:
+
+    ```bash
+    flutter create chatc 
+    ```
+
+5. Añadir las dependencias especificadas en el [pubspec.yaml](pubspec.yaml)
+
+6. Crear archivo .env para configurar Supabase
+
+    ```bash
+    SUPABASE_URL=TU_URL
+    SUPABASE_KEY=TU_KEY
+    ```
+
