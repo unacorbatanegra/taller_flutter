@@ -27,49 +27,61 @@ class _LoginPageState extends State<LoginPage> {
         width: MediaQuery.of(context).size.width,
         child: Form(
           key: key,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text('My app'),
-              gap64,
-              CustomTextField(
-                controller: emailController,
-                label: "Correo",
-                required: true,
-                textCapitalization: TextCapitalization.none,
-                textInputAction: TextInputAction.next,
-                keyboardType: TextInputType.emailAddress,
-                hint: 'ingrese su correo',
-              ),
-              CustomTextField(
-                controller: passwordController,
-                label: "Contraseña",
-                obscureText: obscure,
-                // validator: ,
-                required: true,
-                // onTap: changeObscure,
-                textCapitalization: TextCapitalization.none,
-                keyboardType: TextInputType.visiblePassword,
-                suffix: IconButton.filled(
-                  onPressed: changeObscure,
-                  icon: Icon(
-                    obscure ? Icons.visibility_off : Icons.visibility,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                gap64,
+                const Image(
+                  image: AssetImage(
+                    'assets/images/logo.png',
                   ),
                 ),
-                hint: 'ingrese su contraseña',
-              ),
-              gap32,
-              CustomButton(
-                onTap: onLogin,
-                label: "Iniciar sesión",
-              ),
-              gap32,
-              CupertinoButton(
-                onPressed: onRegister,
-                child: const Text('Registrarse'),
-              )
-            ],
+                Text(
+                  'Chat-C',
+                  style: context.h6,
+                ),
+                gap64,
+                CustomTextField(
+                  controller: emailController,
+                  label: "Correo",
+                  required: true,
+                  textCapitalization: TextCapitalization.none,
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.emailAddress,
+                  hint: 'ingrese su correo',
+                ),
+                CustomTextField(
+                  controller: passwordController,
+                  label: "Contraseña",
+                  obscureText: obscure,
+                  // validator: ,
+                  required: true,
+                  // onTap: changeObscure,
+                  textCapitalization: TextCapitalization.none,
+                  keyboardType: TextInputType.visiblePassword,
+                  suffix: IconButton.filled(
+                    onPressed: changeObscure,
+                    icon: Icon(
+                      obscure ? Icons.visibility_off : Icons.visibility,
+                    ),
+                  ),
+                  hint: 'ingrese su contraseña',
+                ),
+                gap32,
+                CustomButton(
+                  onTap: onLogin,
+                  label: "Iniciar sesión",
+                ),
+                gap8,
+                CupertinoButton(
+                  onPressed: onRegister,
+                  child: const Text('Registrarse'),
+                ),
+                gap32,
+              ],
+            ),
           ),
         ),
       ),

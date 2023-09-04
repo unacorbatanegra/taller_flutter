@@ -82,7 +82,7 @@ mixin AppTheme {
       // brightness: Brightness.dark,
       systemOverlayStyle: SystemUiOverlayStyle.dark,
     ),
-    scaffoldBackgroundColor: const Color(0xFFFCFAF7),
+    scaffoldBackgroundColor: Colors.white,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Palette.green),
@@ -135,7 +135,7 @@ mixin AppTheme {
         size: 28.0,
       ),
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.purple,
+      selectedItemColor: Palette.gray1,
       unselectedItemColor: Palette.gray3,
 
       showUnselectedLabels: false,

@@ -6,7 +6,7 @@ class Conversation {
   final DateTime? modifiedAt;
   final String? createdBy;
   final String title;
-  final String participants;
+  final List<String> participants;
   final String preview;
   final int? unread;
   Conversation({
@@ -21,7 +21,7 @@ class Conversation {
   });
   factory Conversation.create({
     String title = '',
-    required String participants,
+    required List<String> participants,
   }) =>
       Conversation(
         id: null,
@@ -37,20 +37,26 @@ class Conversation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'title': title,
-      'participants': participants,
+      'participants': participants
     };
   }
 
   factory Conversation.fromMap(Map<String, dynamic> map) {
     return Conversation(
       id: map['id'] as String,
-      createdAt: DateTime.parse(map['created_at']),
-      modifiedAt: DateTime.parse(map['modified_at']),
+      createdAt: DateTime.parse(map['created_at']).toLocal(),
+      modifiedAt: DateTime.parse(map['modified_at']).toLocal(),
       createdBy: map['created_by'] as String,
       title: map['title'] as String,
-      participants: map['participants'],
+      participants:
+          List.from(map['participants']).map((e) => e as String).toList(),
       preview: map['preview'],
       unread: map['unread'],
     );
+  }
+
+  @override
+  String toString() {
+    return 'Conversation(id: $id, createdAt: $createdAt, modifiedAt: $modifiedAt, createdBy: $createdBy, title: $title, participants: $participants, preview: $preview, unread: $unread)';
   }
 }

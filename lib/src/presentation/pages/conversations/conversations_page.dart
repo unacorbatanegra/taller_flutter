@@ -23,7 +23,8 @@ class _ConversationsPageState extends State<ConversationsPage> {
   late String id;
   @override
   void initState() {
-    id = supabase.auth.currentUser!.id;
+    if (!mounted) return;
+    id = supabase.auth.currentUser?.id ?? '';
     _stream = supabase
         .from('conversations')
         .stream(primaryKey: ['id'])
@@ -39,7 +40,7 @@ class _ConversationsPageState extends State<ConversationsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Conversations'),
+        title: const Text('Conversaciones'),
         actions: [
           CupertinoButton(
             onPressed: addConversation,
@@ -63,16 +64,18 @@ class _ConversationsPageState extends State<ConversationsPage> {
             if (!snapshot.hasData) {
               return const Center(child: Text('No hay conversaciones aún'));
             }
+            final list =
+                snapshot.data!.where((e) => e.preview.isNotEmpty).toList();
             return ListView.separated(
               itemBuilder: (ctx, idx) {
-                final item = snapshot.data![idx];
+                final item = list[idx];
                 return ConversationWidget(
                   conversation: item,
                   onTap: () => onTap(item),
                 );
               },
               separatorBuilder: (ctx, idx) => gap6,
-              itemCount: snapshot.data!.length,
+              itemCount: list.length,
             );
           },
         ),
@@ -91,4 +94,3 @@ class _ConversationsPageState extends State<ConversationsPage> {
     Navigator.of(context).pushNamed('/conversation', arguments: item);
   }
 }
-

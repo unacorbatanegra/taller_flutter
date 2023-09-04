@@ -21,7 +21,7 @@ class _SplahPageState extends State<SplahPage> {
 
   Future<void> _redirect() async {
     // await for for the widget to mount
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future.delayed(const Duration(milliseconds: 500));
     if (!mounted) return;
     final session = supabase.auth.currentSession;
     if (session == null) {
@@ -46,13 +46,22 @@ class _SplahPageState extends State<SplahPage> {
     return Scaffold(
       body: SizedBox(
         width: context.w,
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('My app'),
             gap64,
-            Center(child: CircularProgressIndicator.adaptive()),
+            const Image(
+              image: AssetImage(
+                'assets/images/logo.png',
+              ),
+            ),
+            Text(
+              'Chat-C',
+              style: context.h6,
+            ),
+            gap64,
+            loadingIndicator,
           ],
         ),
       ),

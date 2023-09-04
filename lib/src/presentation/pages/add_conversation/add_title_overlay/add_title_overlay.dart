@@ -29,7 +29,7 @@ class _AddTitleOverlayState extends State<AddTitleOverlay> {
             minHeight: context.h * .2,
             maxHeight: context.h * .5,
           ),
-          padding: EdgeInsets.only(
+          margin: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
           decoration: const BoxDecoration(
@@ -42,7 +42,9 @@ class _AddTitleOverlayState extends State<AddTitleOverlay> {
           child: SafeArea(
             top: false,
             child: Form(
+              key: key,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Row(
                     children: [
@@ -52,7 +54,7 @@ class _AddTitleOverlayState extends State<AddTitleOverlay> {
                       ),
                       Expanded(
                         child: Text(
-                          'Cultivos',
+                          'Titulo',
                           textAlign: TextAlign.start,
                           style: context.h6,
                         ),
@@ -68,7 +70,8 @@ class _AddTitleOverlayState extends State<AddTitleOverlay> {
                     label: 'Nombre de la conversación',
                     autofocus: true,
                     hint: 'ingrese el nombre para su conversación',
-                  )
+                  ).paddingSymmetric(horizontal: 16.0),
+                  gap48,
                 ],
               ),
             ),
@@ -78,7 +81,10 @@ class _AddTitleOverlayState extends State<AddTitleOverlay> {
     );
   }
 
-  void onBack() {}
+  void onBack() => Navigator.of(context).pop();
 
-  void onSave() {}
+  void onSave() {
+    if (!key.currentState!.validate()) return;
+    Navigator.of(context).pop(controller.text.trim());
+  }
 }

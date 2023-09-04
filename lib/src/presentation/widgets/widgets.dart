@@ -5,6 +5,7 @@ import 'widgets.dart';
 
 export 'custom_button.dart';
 export 'custom_text_field.dart';
+export 'majes_icons.dart';
 export 'palette.dart';
 export 'theme.dart';
 

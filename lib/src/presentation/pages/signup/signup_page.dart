@@ -4,14 +4,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../utils/utils.dart';
 import '../../widgets/widgets.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final key = GlobalKey<FormState>();
@@ -29,7 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
           padding: const EdgeInsets.only(
             right: 16,
             left: 16,
-            bottom: 64,
+            bottom: 32,
           ),
           child: CustomButton(
             onTap: onRegister,

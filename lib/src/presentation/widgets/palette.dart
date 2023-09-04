@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class Palette {
   static const secondary = Color(0xFFFDEBD8);
-  static const primary = Color(0xFF6C6EA0);
+  static const primary = Color(0xFF3B8C9E);
   static const blueLight = Color(0xFFE3EAF2);
   static const green = Color(0xFF426D36);
   static const background = Color(0xFFFBF9F5);

@@ -26,7 +26,7 @@ class _ConversationWidgetState extends State<ConversationWidget> {
     }
     final myId = supabase.auth.currentUser!.id;
     final id = widget.conversation.participants
-        .split(',')
+        
         .where((e) => e != myId)
         .first;
     if (Profile.cache.containsKey(id)) {
@@ -68,7 +68,25 @@ class _ConversationWidgetState extends State<ConversationWidget> {
             child: Text(snapshot.data!.substring(0, 2)),
           ),
           onTap: widget.onTap,
-          subtitle: Text(widget.conversation.preview),
+          subtitle: Row(
+            children: [
+              Expanded(
+                flex: 8,
+                child: Text(
+                  widget.conversation.preview,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Text(
+                  widget.conversation.modifiedAt!.hourFormat,
+                  textAlign: TextAlign.end,
+                ),
+              ),
+            ],
+          ),
           title: Text(snapshot.data!),
         );
       },

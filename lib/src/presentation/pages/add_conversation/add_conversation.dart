@@ -20,8 +20,6 @@ class _AddConversationState extends State<AddConversation> {
   final participants = <String>{};
   final supabase = getIt.get<SupabaseClient>();
 
-  
-
   late String id;
   @override
   void initState() {
@@ -115,18 +113,51 @@ class _AddConversationState extends State<AddConversation> {
       ) as String?;
       if (result == null) return;
       conversation = Conversation.create(
-        participants: participants.join(','),
+        participants: participants.toList(),
         title: result,
       );
     } else {
       conversation = Conversation.create(
-        participants: participants.join(','),
+        participants: participants.toList(),
       );
+      try {
+        if (!mounted) return;
+        context.showPreloader();
+        final or =
+            'participants.cs.{${participants.toList().reversed.join(',')}}';
+        final c = await supabase
+            .from('conversations')
+            .select<List<Map<String, dynamic>>>()
+            .or(or)
+            .then(
+              (value) => value
+                  .map((e) => Conversation.fromMap(e))
+                  .where((a) => a.participants.length == 2),
+            );
+
+        if (!mounted) return;
+        await context.hidePreloader();
+        // log.d(c);
+        if (c.length > 1) {
+          if (!mounted) return;
+          context.showErrorSnackBar(message: 'Hubo un problema');
+          return;
+        }
+        if (!mounted) return;
+        Navigator.of(context).pushReplacementNamed(
+          '/conversation',
+          arguments: c.first,
+        );
+        return;
+      } catch (e) {
+        log.d(e);
+      }
     }
 
     try {
       if (!mounted) return;
       context.showPreloader();
+      log.d('need to be created');
       final c = await supabase
           .from('conversations')
           .upsert(conversation.toMap())
