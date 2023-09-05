@@ -1,6 +1,6 @@
 # Chat-C
 
-Este proyecto será realizado en el marco del Taller de Flutter a realizarse en septiembre de 2023
+Este proyecto será realizado en el marco del Taller de Flutter, Septiembre de 2023
 
 ## Instrucciones
 
