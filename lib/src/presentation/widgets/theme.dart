@@ -14,6 +14,7 @@ mixin AppTheme {
   static final theme = ThemeData(
     visualDensity: VisualDensity.adaptivePlatformDensity,
     primaryColor: Palette.primary,
+    
     // primaryColorBrightness: Brightness.dark,
 
     fontFamily: 'Poppins',
@@ -27,6 +28,7 @@ mixin AppTheme {
       surface: Colors.white,
       // primaryVariant: Palette.primary,
       error: Colors.red,
+      
       // secondaryVariant: Palette.primary,
       background: Palette.background,
       onSurface: Colors.white,
@@ -82,7 +84,7 @@ mixin AppTheme {
       // brightness: Brightness.dark,
       systemOverlayStyle: SystemUiOverlayStyle.dark,
     ),
-    scaffoldBackgroundColor: Colors.white,
+    // scaffoldBackgroundColor: Colors.white,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Palette.green),
