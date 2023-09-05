@@ -25,3 +25,11 @@ Este proyecto será realizado en el marco del Taller de Flutter a realizarse en 
     SUPABASE_KEY=TU_KEY
     ```
 
+
+
+
+
+
+### DEMO:
+![Frame 19](https://github.com/unacorbatanegra/taller_flutter/assets/44511181/07c32075-7913-4558-b392-38693ab5f0ba)
+
